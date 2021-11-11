@@ -7,7 +7,7 @@
   "main": "index.js",
   "scripts": {
     "build": "yarn run gen-services",
-    "gen-services": "glob-run grpc_tools_node_protoc --ts_out=service=grpc-node,mode=grpc-js:. --js_out=import_style=commonjs,binary:. --grpc_out=grpc_js:. -I ../contracts \"../proto/**/*.proto\""
+    "gen-services": "glob-run grpc_tools_node_protoc --ts_out=service=grpc-node,mode=grpc-js:. --js_out=import_style=commonjs,binary:. --grpc_out=grpc_js:. -I ../proto \"../proto/**/*.proto\""
   },
   "contributors": [
     "Jye Cusch <jye.cusch@nitric.io>",

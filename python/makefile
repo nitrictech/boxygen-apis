@@ -9,7 +9,7 @@ grpc-client: install
 	@echo Generating Proto Sources
 	@echo $(OUTPUT)
 	@mkdir -p $(OUTPUT)
-	@python3 -m grpc_tools.protoc -I $(CONTRACTS) --python_betterproto_out=$(OUTPUT) ../proto/*/*/*/*.proto
+	@python3 -m grpc_tools.protoc -I $(CONTRACTS) --python_betterproto_out=$(OUTPUT) ../proto/*/*/*.proto
 
 # Exclude dependency on grpc-client module should be versioned at this point
 build-dist:
