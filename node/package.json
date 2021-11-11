@@ -1,0 +1,30 @@
+{
+  "name": "@nitric/boxygen-api",
+  "description": "Boxygen NodeJS base API Client",
+  "author": "Nitric <https://github.com/nitrictech>",
+  "repository": "https://github.com/nitrictech/boxygen-apis",
+	"license": "Apache-2.0",
+  "main": "index.js",
+  "scripts": {
+    "build": "yarn run gen-services",
+    "gen-services": "glob-run grpc_tools_node_protoc --ts_out=service=grpc-node,mode=grpc-js:. --js_out=import_style=commonjs,binary:. --grpc_out=grpc_js:. -I ../contracts \"../proto/**/*.proto\""
+  },
+  "contributors": [
+    "Jye Cusch <jye.cusch@nitric.io>",
+    "Tim Holm <tim.holm@nitric.io>",
+    "David Moore <david.moore@nitric.io>"
+  ],
+  "dependencies": {
+    "@grpc/grpc-js": "^1.1.7",
+    "google-protobuf": "3.14.0",
+    "tslib": "^2.1.0"
+  },
+  "devDependencies": {
+    "@types/google-protobuf": "3.2.7",
+    "@types/node": "^16.9.0",
+    "glob-run": "^0.1.7",
+    "grpc-tools": "^1.9.1",
+    "ts-protoc-gen": "^0.14.0",
+    "typescript": "^3.3"
+  }
+}
