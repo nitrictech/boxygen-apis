@@ -200,8 +200,8 @@ export class FromRequest extends jspb.Message {
   getImage(): string;
   setImage(value: string): void;
 
-  getIgnoreFile(): string;
-  setIgnoreFile(value: string): void;
+  getAs(): string;
+  setAs(value: string): void;
 
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): FromRequest.AsObject;
@@ -216,7 +216,7 @@ export class FromRequest extends jspb.Message {
 export namespace FromRequest {
   export type AsObject = {
     image: string,
-    ignoreFile: string,
+    as: string,
   }
 }
 

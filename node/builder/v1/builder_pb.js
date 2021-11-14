@@ -1644,7 +1644,7 @@ proto.boxygen.builder.v1.FromRequest.prototype.toObject = function(opt_includeIn
 proto.boxygen.builder.v1.FromRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     image: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    ignoreFile: jspb.Message.getFieldWithDefault(msg, 10, "")
+    as: jspb.Message.getFieldWithDefault(msg, 10, "")
   };
 
   if (includeInstance) {
@@ -1687,7 +1687,7 @@ proto.boxygen.builder.v1.FromRequest.deserializeBinaryFromReader = function(msg,
       break;
     case 10:
       var value = /** @type {string} */ (reader.readString());
-      msg.setIgnoreFile(value);
+      msg.setAs(value);
       break;
     default:
       reader.skipField();
@@ -1725,7 +1725,7 @@ proto.boxygen.builder.v1.FromRequest.serializeBinaryToWriter = function(message,
       f
     );
   }
-  f = message.getIgnoreFile();
+  f = message.getAs();
   if (f.length > 0) {
     writer.writeString(
       10,
@@ -1754,10 +1754,10 @@ proto.boxygen.builder.v1.FromRequest.prototype.setImage = function(value) {
 
 
 /**
- * optional string ignore_file = 10;
+ * optional string as = 10;
  * @return {string}
  */
-proto.boxygen.builder.v1.FromRequest.prototype.getIgnoreFile = function() {
+proto.boxygen.builder.v1.FromRequest.prototype.getAs = function() {
   return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 10, ""));
 };
 
@@ -1766,7 +1766,7 @@ proto.boxygen.builder.v1.FromRequest.prototype.getIgnoreFile = function() {
  * @param {string} value
  * @return {!proto.boxygen.builder.v1.FromRequest} returns this
  */
-proto.boxygen.builder.v1.FromRequest.prototype.setIgnoreFile = function(value) {
+proto.boxygen.builder.v1.FromRequest.prototype.setAs = function(value) {
   return jspb.Message.setProto3StringField(this, 10, value);
 };
 

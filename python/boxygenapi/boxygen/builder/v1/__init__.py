@@ -69,7 +69,7 @@ class FromRequest(betterproto.Message):
     # args
     image: str = betterproto.string_field(1)
     # options
-    ignore_file: str = betterproto.string_field(10)
+    as_: str = betterproto.string_field(10)
 
 
 @dataclass(eq=False, repr=False)
@@ -181,11 +181,11 @@ class BuilderStub(betterproto.ServiceStub):
         ):
             yield response
 
-    async def from_(self, *, image: str = "", ignore_file: str = "") -> "FromResponse":
+    async def from_(self, *, image: str = "", as_: str = "") -> "FromResponse":
 
         request = FromRequest()
         request.image = image
-        request.ignore_file = ignore_file
+        request.as_ = as_
 
         return await self._unary_unary(
             "/boxygen.builder.v1.Builder/From", request, FromResponse
@@ -238,7 +238,7 @@ class BuilderBase(ServiceBase):
     ) -> AsyncIterator["OutputResponse"]:
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def from_(self, image: str, ignore_file: str) -> "FromResponse":
+    async def from_(self, image: str, as_: str) -> "FromResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def run(
@@ -317,7 +317,7 @@ class BuilderBase(ServiceBase):
 
         request_kwargs = {
             "image": request.image,
-            "ignore_file": request.ignore_file,
+            "as_": request.as_,
         }
 
         response = await self.from_(**request_kwargs)
