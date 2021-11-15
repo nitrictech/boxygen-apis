@@ -161,7 +161,7 @@ if (goog.DEBUG && !COMPILED) {
  * @constructor
  */
 proto.boxygen.builder.v1.FromRequest = function(opt_data) {
-  jspb.Message.initialize(this, opt_data, 0, -1, null, null);
+  jspb.Message.initialize(this, opt_data, 0, -1, proto.boxygen.builder.v1.FromRequest.repeatedFields_, null);
 };
 goog.inherits(proto.boxygen.builder.v1.FromRequest, jspb.Message);
 if (goog.DEBUG && !COMPILED) {
@@ -1612,6 +1612,13 @@ proto.boxygen.builder.v1.CopyRequest.prototype.setFrom = function(value) {
 
 
 
+/**
+ * List of repeated fields within this message type.
+ * @private {!Array<number>}
+ * @const
+ */
+proto.boxygen.builder.v1.FromRequest.repeatedFields_ = [11];
+
 
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
@@ -1644,7 +1651,8 @@ proto.boxygen.builder.v1.FromRequest.prototype.toObject = function(opt_includeIn
 proto.boxygen.builder.v1.FromRequest.toObject = function(includeInstance, msg) {
   var f, obj = {
     image: jspb.Message.getFieldWithDefault(msg, 1, ""),
-    as: jspb.Message.getFieldWithDefault(msg, 10, "")
+    as: jspb.Message.getFieldWithDefault(msg, 10, ""),
+    ignoreList: (f = jspb.Message.getRepeatedField(msg, 11)) == null ? undefined : f
   };
 
   if (includeInstance) {
@@ -1689,6 +1697,10 @@ proto.boxygen.builder.v1.FromRequest.deserializeBinaryFromReader = function(msg,
       var value = /** @type {string} */ (reader.readString());
       msg.setAs(value);
       break;
+    case 11:
+      var value = /** @type {string} */ (reader.readString());
+      msg.addIgnore(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -1732,6 +1744,13 @@ proto.boxygen.builder.v1.FromRequest.serializeBinaryToWriter = function(message,
       f
     );
   }
+  f = message.getIgnoreList();
+  if (f.length > 0) {
+    writer.writeRepeatedString(
+      11,
+      f
+    );
+  }
 };
 
 
@@ -1768,6 +1787,43 @@ proto.boxygen.builder.v1.FromRequest.prototype.getAs = function() {
  */
 proto.boxygen.builder.v1.FromRequest.prototype.setAs = function(value) {
   return jspb.Message.setProto3StringField(this, 10, value);
+};
+
+
+/**
+ * repeated string ignore = 11;
+ * @return {!Array<string>}
+ */
+proto.boxygen.builder.v1.FromRequest.prototype.getIgnoreList = function() {
+  return /** @type {!Array<string>} */ (jspb.Message.getRepeatedField(this, 11));
+};
+
+
+/**
+ * @param {!Array<string>} value
+ * @return {!proto.boxygen.builder.v1.FromRequest} returns this
+ */
+proto.boxygen.builder.v1.FromRequest.prototype.setIgnoreList = function(value) {
+  return jspb.Message.setField(this, 11, value || []);
+};
+
+
+/**
+ * @param {string} value
+ * @param {number=} opt_index
+ * @return {!proto.boxygen.builder.v1.FromRequest} returns this
+ */
+proto.boxygen.builder.v1.FromRequest.prototype.addIgnore = function(value, opt_index) {
+  return jspb.Message.addToRepeatedField(this, 11, value, opt_index);
+};
+
+
+/**
+ * Clears the list making it empty but non-null.
+ * @return {!proto.boxygen.builder.v1.FromRequest} returns this
+ */
+proto.boxygen.builder.v1.FromRequest.prototype.clearIgnoreList = function() {
+  return this.setIgnoreList([]);
 };
 
 

@@ -203,6 +203,11 @@ export class FromRequest extends jspb.Message {
   getAs(): string;
   setAs(value: string): void;
 
+  clearIgnoreList(): void;
+  getIgnoreList(): Array<string>;
+  setIgnoreList(value: Array<string>): void;
+  addIgnore(value: string, index?: number): string;
+
   serializeBinary(): Uint8Array;
   toObject(includeInstance?: boolean): FromRequest.AsObject;
   static toObject(includeInstance: boolean, msg: FromRequest): FromRequest.AsObject;
@@ -217,6 +222,7 @@ export namespace FromRequest {
   export type AsObject = {
     image: string,
     as: string,
+    ignoreList: Array<string>,
   }
 }
 

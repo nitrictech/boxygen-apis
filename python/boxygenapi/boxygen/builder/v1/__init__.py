@@ -68,8 +68,10 @@ class CopyRequest(betterproto.Message):
 class FromRequest(betterproto.Message):
     # args
     image: str = betterproto.string_field(1)
-    # options
+    # options set the state id of this working container
     as_: str = betterproto.string_field(10)
+    # set files to ignore from the workspace (used in operations like copy)
+    ignore: List[str] = betterproto.string_field(11)
 
 
 @dataclass(eq=False, repr=False)
@@ -181,11 +183,15 @@ class BuilderStub(betterproto.ServiceStub):
         ):
             yield response
 
-    async def from_(self, *, image: str = "", as_: str = "") -> "FromResponse":
+    async def from_(
+        self, *, image: str = "", as_: str = "", ignore: Optional[List[str]] = None
+    ) -> "FromResponse":
+        ignore = ignore or []
 
         request = FromRequest()
         request.image = image
         request.as_ = as_
+        request.ignore = ignore
 
         return await self._unary_unary(
             "/boxygen.builder.v1.Builder/From", request, FromResponse
@@ -238,7 +244,9 @@ class BuilderBase(ServiceBase):
     ) -> AsyncIterator["OutputResponse"]:
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
-    async def from_(self, image: str, as_: str) -> "FromResponse":
+    async def from_(
+        self, image: str, as_: str, ignore: Optional[List[str]]
+    ) -> "FromResponse":
         raise grpclib.GRPCError(grpclib.const.Status.UNIMPLEMENTED)
 
     async def run(
@@ -318,6 +326,7 @@ class BuilderBase(ServiceBase):
         request_kwargs = {
             "image": request.image,
             "as_": request.as_,
+            "ignore": request.ignore,
         }
 
         response = await self.from_(**request_kwargs)
